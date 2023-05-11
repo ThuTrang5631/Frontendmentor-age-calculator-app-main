@@ -1,0 +1,48 @@
+// colors
+
+$purple: hsl(259, 100%, 65%);
+$light-red: hsl(0, 100%, 67%);
+$white: hsl(0, 0%, 100%);
+$off-white: hsl(0, 0%, 94%);
+$light-grey: hsl(0, 0%, 86%);
+$smokey-grey: hsl(0, 1%, 44%);
+$off-black: hsl(0, 0%, 8%);
+
+//breakpoints
+
+$breakpoint-xl: 1439px;
+$breakpoint-lg: 991px;
+$breakpoint-md: 767px;
+$breakpoint-xs: 374px;
+
+//add fonts
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("./assets/fonts/Poppins-Bold.ttf") format(truetype);
+}
+
+@font-face {
+  font-family: "Poppins BoldItalic";
+  src: url("./assets/fonts/Poppins-BoldItalic.ttf") format(truetype);
+}
+
+@font-face {
+  font-family: "Poppins ExtraBold";
+  src: url("./assets/fonts/Poppins-ExtraBold.ttf") format(truetype);
+}
+
+@font-face {
+  font-family: "Poppins ExtraBoldItalic";
+  src: url("./assets/fonts/Poppins-ExtraBoldItalic.ttf") format(truetype);
+}
+
+@font-face {
+  font-family: "Poppins Italic";
+  src: url("./assets/fonts/Poppins-Italic.ttf") format(truetype);
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("./assets/fonts/Poppins-Regular.ttf") format(truetype);
+}
