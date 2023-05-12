@@ -48,6 +48,11 @@
   border-radius: 10px;
   border: 1px solid hsl(0, 0%, 86%);
   cursor: pointer;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
 }
 
 .input:hover,
@@ -106,4 +111,46 @@
 
 .attribution {
   text-align: center;
+}
+
+.icon-result {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .calculator-container {
+    padding: 20px;
+  }
+
+  .wrap-calculator {
+    width: 100%;
+    border-radius: 30px 30px 130px 30px;
+  }
+
+  .wrap-input .label-input {
+    font-size: 15px;
+  }
+
+  .wrap-input .input {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .wrap-btn-result {
+    position: relative;
+  }
+
+  .btn-result {
+    padding: 15px;
+    position: absolute;
+    left: 39%;
+  }
+
+  .icon-result {
+    width: 24px;
+  }
+
+  .result-content-desc {
+    font-size: 40px;
+  }
 }
