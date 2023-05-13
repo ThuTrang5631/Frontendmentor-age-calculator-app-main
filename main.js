@@ -11,7 +11,9 @@ const showError = (input, message) => {
   const formControl = input.parentElement;
 
   const labels = document.getElementsByClassName("label-input");
-  labels.className = "label-input error";
+  Array.from(labels).forEach((label) => {
+    label.style.color = "hsl(0, 100%, 67%)";
+  });
 
   input.className = "input input-error";
 
@@ -33,7 +35,7 @@ const handleInput = () => {
   if (dayValue === "") {
     showError(dayEle, "This field is required");
   } else if (dayValue > listOfDays) {
-    showError(dayEle, "Must be a valid date");
+    showError(dayEle, "Must be a valid day");
   } else if (monthValue === "1" || monthValue > "2") {
     if (dayValue > listOfDays[monthValue - 1]) {
       showError(dayEle, "Must be a valid date");
