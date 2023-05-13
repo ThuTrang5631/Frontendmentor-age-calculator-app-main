@@ -38,6 +38,13 @@
   font-family: "Poppins Bold";
   line-height: 20px;
   margin-bottom: 10px;
+}
+
+.error {
+  color: hsl(0, 100%, 67%);
+}
+
+.success {
   color: hsl(0, 1%, 44%);
 }
 
