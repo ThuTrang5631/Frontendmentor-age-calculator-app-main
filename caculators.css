@@ -141,6 +141,12 @@ small {
   border: 1px solid hsl(0, 100%, 67%);
 }
 
+.attribution {
+  color: hsl(259, 100%, 65%);
+  font-family: "Poppins Bold";
+  font-size: 15px;
+}
+
 @media screen and (max-width: 767px) {
   .calculator-container {
     padding: 20px;

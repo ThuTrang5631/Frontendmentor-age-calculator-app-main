@@ -17,11 +17,6 @@ const showError = (input, message) => {
   // get element contain input and style for error
   const formControl = input.parentElement;
 
-  const labels = document.getElementsByClassName("label-input");
-  Array.from(labels).forEach((label) => {
-    label.style.color = "hsl(0, 100%, 67%)";
-  });
-
   input.className = "input input-error";
 
   const error = formControl.querySelector("small");
@@ -31,11 +26,6 @@ const showError = (input, message) => {
 
 const hideError = (input) => {
   const formControl = input.parentElement;
-
-  const labels = document.getElementsByClassName("label-input");
-  Array.from(labels).forEach((label) => {
-    label.style.color = "hsl(0, 1%, 44%)";
-  });
 
   input.className = "input";
 
@@ -55,6 +45,13 @@ const handleInput = (dayValue, monthValue, yearValue) => {
     isValidate = false;
   } else if (dayValue > listOfDays || dayValue < 1) {
     showError(dayEle, "Must be a valid day");
+    isValidate = false;
+  } else if (
+    monthCurrent == monthValue &&
+    yearCurrent == yearValue &&
+    dayCurrent < dayValue
+  ) {
+    showError(dayEle, "Must be a date in the past");
     isValidate = false;
   } else if (monthValue === "1" || monthValue > "2") {
     if (dayValue > listOfDays[monthValue - 1]) {
@@ -86,7 +83,7 @@ const handleInput = (dayValue, monthValue, yearValue) => {
     showError(monthEle, "Must be a valid month");
     isValidate = false;
   } else if (monthValue > monthCurrent && yearValue == yearCurrent) {
-    showError(monthEle, "Must be in the past");
+    showError(monthEle, "Must be a month in the past");
     isValidate = false;
   } else {
     hideError(monthEle);
@@ -101,6 +98,18 @@ const handleInput = (dayValue, monthValue, yearValue) => {
     isValidate = false;
   } else {
     hideError(yearEle);
+  }
+
+  if (!isValidate) {
+    const labels = document.getElementsByClassName("label-input");
+    Array.from(labels).forEach((label) => {
+      label.style.color = "hsl(0, 100%, 67%)";
+    });
+  } else {
+    const labels = document.getElementsByClassName("label-input");
+    Array.from(labels).forEach((label) => {
+      label.style.color = "hsl(0, 1%, 44%)";
+    });
   }
 
   return isValidate;
