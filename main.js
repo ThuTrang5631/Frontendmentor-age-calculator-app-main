@@ -79,7 +79,7 @@ const handleInput = (dayValue, monthValue, yearValue) => {
   if (monthValue === "") {
     showError(monthEle, "This field is required");
     isValidate = false;
-  } else if (monthValue >= 13) {
+  } else if (monthValue >= 13 || monthValue <= 0) {
     showError(monthEle, "Must be a valid month");
     isValidate = false;
   } else if (monthValue > monthCurrent && yearValue == yearCurrent) {
@@ -96,6 +96,8 @@ const handleInput = (dayValue, monthValue, yearValue) => {
   } else if (yearValue > dateCurrent.getFullYear()) {
     showError(yearEle, "Must be in the past");
     isValidate = false;
+  } else if (yearValue <= 0) {
+    showError(yearEle, "Must be a valid year");
   } else {
     hideError(yearEle);
   }
