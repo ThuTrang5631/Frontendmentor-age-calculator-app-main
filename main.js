@@ -38,6 +38,7 @@ const hideError = (input) => {
 const handleInput = (dayValue, monthValue, yearValue) => {
   let isValidate = true;
   const listOfDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const changeNumberMonth = Number(monthValue);
 
   //check date
   if (dayValue === "") {
@@ -53,12 +54,14 @@ const handleInput = (dayValue, monthValue, yearValue) => {
   ) {
     showError(dayEle, "Must be a date in the past");
     isValidate = false;
-  } else if (monthValue === "1" || monthValue > "2") {
-    if (dayValue > listOfDays[monthValue - 1]) {
+  } else if (changeNumberMonth === 1 || changeNumberMonth > 2) {
+    if (dayValue > listOfDays[changeNumberMonth - 1]) {
       showError(dayEle, "Must be a valid date");
       isValidate = false;
+    } else {
+      hideError(dayEle);
     }
-  } else if (monthValue === "2") {
+  } else if (changeNumberMonth === 2) {
     let leapYear = false;
     if ((!(yearValue % 4) && yearValue % 100) || !(yearValue % 400)) {
       leapYear = true;
@@ -70,6 +73,8 @@ const handleInput = (dayValue, monthValue, yearValue) => {
     } else if (!leapYear && dayValue >= 29) {
       showError(dayEle, "Must be a valid date");
       isValidate = false;
+    } else {
+      hideError(dayEle);
     }
   } else {
     hideError(dayEle);
@@ -79,10 +84,10 @@ const handleInput = (dayValue, monthValue, yearValue) => {
   if (monthValue === "") {
     showError(monthEle, "This field is required");
     isValidate = false;
-  } else if (monthValue >= 13 || monthValue <= 0) {
+  } else if (changeNumberMonth >= 13 || monthValue <= 0) {
     showError(monthEle, "Must be a valid month");
     isValidate = false;
-  } else if (monthValue > monthCurrent && yearValue == yearCurrent) {
+  } else if (changeNumberMonth > monthCurrent && yearValue == yearCurrent) {
     showError(monthEle, "Must be a month in the past");
     isValidate = false;
   } else {
@@ -120,8 +125,9 @@ const handleInput = (dayValue, monthValue, yearValue) => {
 //handle calculate age
 
 const handleCalculateAge = (dayValue, monthValue, yearValue) => {
+  const changeNumberMonth = Number(monthValue);
+
   // get date's today
-  console.log("date", dateCurrent);
   let yearAge;
   let monthAge;
   let dayAge;
@@ -152,7 +158,7 @@ const handleCalculateAge = (dayValue, monthValue, yearValue) => {
     if (dayCurrent >= dayValue) {
       dayAge = dayCurrent - dayValue;
     } else {
-      dayAge = dayCurrent - dayValue + listOfDays[monthValue - 1];
+      dayAge = dayCurrent - dayValue + listOfDays[changeNumberMonth - 1];
     }
 
     //show results

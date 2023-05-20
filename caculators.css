@@ -134,7 +134,7 @@ small {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .input-error {
